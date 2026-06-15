@@ -1,14 +1,14 @@
 from check import check
 
 guesses = 0
-curr_word = "fuck"
-goal_word = "cool"
+curr_word = "yuri"
+goal_word = "turd"
 the_print = f"GOAL: {goal_word} \n({curr_word[0]}) ({curr_word[1]}) ({curr_word[2]}) ({curr_word[3]})"
 
 
 def main(curr_word, goal_word, the_print, guesses):
     print(the_print)
-    input_word = input()
+    input_word = input().lower()
     checked = check(input_word, curr_word, goal_word)
     match checked:
         case "same word":
