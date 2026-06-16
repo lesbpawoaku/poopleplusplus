@@ -1,4 +1,4 @@
-poop_list = "poop, shit, crap, fart, caca, dung, turd, scat, soil".split()
+poop_list = "poop shit crap fart caca dung turd scat soil".split()
 
 word_list = """
 AAHS AALS ABAC ABAS ABBA ABBE ABBS ABED ABER ABET ABID ABLE ABLY ABRI ABUT ABYE ABYS ACAI ACCA ACED ACER ACES
