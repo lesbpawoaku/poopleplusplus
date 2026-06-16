@@ -1,7 +1,7 @@
 from check import check
 
 guesses = 0
-curr_word = "yuri"
+curr_word = "mark"
 goal_word = "turd"
 the_print = f"GOAL: {goal_word} \n({curr_word[0]}) ({curr_word[1]}) ({curr_word[2]}) ({curr_word[3]})"
 
@@ -14,6 +14,8 @@ def main(curr_word, goal_word, the_print, guesses):
         case "same word":
             print("word is the same")
             main(curr_word, goal_word, the_print, guesses)
+        case "canceled":
+            print("canceled!!")
         case "too short":
             print("word is too short")
             main(curr_word, goal_word, the_print, guesses)
@@ -38,7 +40,7 @@ def main(curr_word, goal_word, the_print, guesses):
             )
         case _:
             print("error")
-            main(curr_word, goal_word, the_print)
+            main(curr_word, goal_word, the_print, guesses)
 
 
 if __name__ == "__main__":

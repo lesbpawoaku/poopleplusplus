@@ -6,6 +6,8 @@ def check(input_word, curr_word, goal_word):
     # goal_letters = 0
     if input_word == curr_word:
         return "same word"
+    elif input_word == "cancel":
+        return "canceled"
     elif len(input_word) < 4:
         return "too short"
     elif len(input_word) > 4:
