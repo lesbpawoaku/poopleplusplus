@@ -1,27 +1,31 @@
-import datetime
 import random
 
 from check import check
-from word_list import word_list
+from word_list import poop_list, word_list
 
-now = datetime.datetime.now()
-random.seed(str(now)[:-15])
+# now = datetime.datetime.now()
+# random.seed(str(now)[:-15])
 
 
-def pick():
-    goal_word = random.choice(word_list)
-    new_word = random.choice(word_list)
+def pick(game_mode):
 
-    def new_word_check(new_word, goal_word, words_away):
-        if words_away > 5:
-            checker = check(new_word, goal_word, goal_word)
-            match checker:
-                case "valid":
-                    new_word_check(random.choice(word_list), new_word, words_away + 1)
-                case _:
-                    new_word_check(random.choice(word_list), goal_word, words_away)
-        else:
-            return new_word
+    # match game_diff:
+    #    case "normal":
+    #        difficulty = 5
+    #    case "hard":
+    #        difficulty = 8
+    #    case "impossible":
+    #        difficulty = 12
+    #    case _:
+    #        difficulty = 5
 
-    first_word = new_word_check(new_word, goal_word, 0)
+    match game_mode:
+        case "poop":
+            goal_word = random.choice(poop_list)
+        case "chaos":
+            goal_word = random.choice(word_list)
+        case _:
+            goal_word = game_mode
+
+    first_word = random.choice(word_list)
     return first_word, goal_word
