@@ -1,7 +1,11 @@
+import datetime
 import random
 
 from check import check
 from word_list import word_list
+
+now = datetime.datetime.now()
+random.seed(str(now)[:-15])
 
 
 def pick():
