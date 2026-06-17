@@ -1,27 +1,38 @@
 import random
+from collections import deque
 
 from word_list import word_list
 
-visited = []
 
-
-def new_word(word):
+def new_words(word):
     global visited
+    words = []
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-    while True:
-        i = random.randint(0, 3)
-        char = random.randint(0, 25)
-        new_char = alphabet[char]
-        new_word = "%s%s%s" % (word[:i], new_char, word[i + 1 :])
-        if new_word in word_list and new_word not in visited:
-            visited.append(new_word)
-            return new_word
+    for i in range(4):
+        for char in alphabet:
+            if char != word[i]:
+                words.append("%s%s%s" % (word[:i], char, word[i + 1 :]))
+    random.shuffle(words)
+    for word in words:
+        yield word
 
 
-def new_path(diff, goal):
+def word_path(end, diff):
     global visited
-    visited = [goal]
-    curr = goal
-    for i in range(diff):
-        curr = new_word(curr)
-    return visited[-1]
+    queue = deque([end])
+    visited = {end}
+    parent = {end: None}
+    while queue:
+        word = queue.popleft()
+        path = []
+        curr = word
+        while curr is not None:
+            path.append(curr)
+            curr = parent[curr]
+        if diff == len(path) - 1:
+            return word
+        for new_word in new_words(word):
+            if new_word in word_list and new_word not in visited:
+                visited.add(new_word)
+                parent[new_word] = word
+                queue.append(new_word)

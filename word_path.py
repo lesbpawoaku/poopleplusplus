@@ -25,10 +25,9 @@ def word_path(start, end):
             return path[::-1]
         for new_word in new_words(word):
             if new_word in word_list and new_word not in visited:
-                print(new_word)
                 visited.add(new_word)
                 parent[new_word] = word
                 queue.append(new_word)
 
 
-print(word_path("khor", "dreg"))
+print(word_path("unai", "gang"))
