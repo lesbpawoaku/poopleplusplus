@@ -10,13 +10,13 @@ from word_list import poop_list, word_list
 def pick(game_diff, game_mode):
     match game_diff:
         case "normal":
-            difficulty = 5
+            difficulty = random.randint(4, 6)
         case "hard":
-            difficulty = 8
+            difficulty = random.randint(7, 9)
         case "impossible":
-            difficulty = 10
+            difficulty = random.randint(10, 12)
         case _:
-            difficulty = 5
+            difficulty = random.randint(4, 6)
 
     match game_mode:
         case "poop":
