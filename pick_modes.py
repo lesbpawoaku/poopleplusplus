@@ -30,7 +30,14 @@ def pick(game_diff, game_mode):
         case _:
             goal_word = "poop"
     print("Finding suitable word!\n(Might take longer on harder difficulties)")
-    first_word = scale_path(goal_word, difficulty)
+    while True:
+        first_word = scale_path(goal_word, difficulty)
+        if first_word is not None:
+            break
+        else:
+            if game_mode == "custom":
+                print("Couldn't find a possible path. Please choose a different word")
+                goal_word = mode_custom()
     print(f"Word chosen: {first_word}")
     return first_word, goal_word
 
